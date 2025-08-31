@@ -20,7 +20,7 @@ function atualizarLista() {
     ul.innerHTML = '';
     let i = 0;
     while (i < amigos.length) {
-        ul.innerHTML = ul.innerHTML + '<li>' + amigos[i] + '</li>';
+        ul.innerHTML = ul.innerHTML + '<li>' + amigos[i] + '<button onclick="remover(' + i + ')">x</button>' + '</li>';
         i = i + 1; 
     }
 }
@@ -53,4 +53,18 @@ function nomeJaExiste(nome) {
         i = i + 1;
     }
     return false;
+}
+
+function remover(indice) {
+    let novaLista = [];
+    let i = 0;
+    while (i < amigos.length) {
+        if (i !== indice) {
+            novaLista.push(amigos[i]);
+        }
+        i = i + 1;
+    }
+    amigos = novaLista;
+    document.getElementById('resultado').innerHTML = '';
+    atualizarLista();
 }
